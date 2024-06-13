@@ -1,0 +1,462 @@
+      subroutine rrst(rtdb,
+     &    d_v2,k_v2_offset,nos,nvs,noas,nobs,nvas,nvbs,nactv,
+     &    nstot,
+     D    h,v)
+#ifndef OPTIMIZE_DUCC
+CDIR$ OPTIMIZE: 2
+#endif
+c
+c  Only for RHF
+c
+c all varaible below have to be defined in the tce_energy.f
+c the nact should be defined in the input set tce:nactv
+c
+c All occupied orbitals are treated as active
+c nactv defines the number of active virtual orbitals
+c please do not freeze the occupied orbitals for now
+c
+c nactv - number of active virtual orbitals
+c nstot - total number of spinorbitals nstot=nos+nvs
+c nos   - number of occupied spinorbitals
+c nvs   - number of virtual spinorbitals
+c noas  - number of occupied alpha spinorbitals
+c nobs  - number of occupied beta spinorbitals
+c nvas  - number of virtual  alhoa spinorbitals
+c nvbs  - number of virtual beta spinorbitals
+c
+c spinorbital convention
+c
+c | noas | nobs | nvas | nvbs |
+c
+c ene_orb contains orbital energies
+c
+      implicit none
+#include "global.fh"
+#include "mafdecls.fh"
+#include "sym.fh"
+#include "util.fh"
+#include "stdio.fh"
+#include "rtdb.fh"
+#include "errquit.fh"
+#include "tce.fh"
+#include "tce_main.fh"
+      integer d_v2    ! GA handle for v2
+      integer k_v2_offset
+      integer nos,nvs ! # of occupied/virtual spinorbitals
+      integer noas,nobs,nvas,nvbs ! # of occupied/virtual alphas betas
+      integer nactv,nstot
+cc      double precision ene_orb(nos+nvs)  ! a copy of dbl_mb(k_sorted)
+      integer size
+      integer rtdb
+      integer l_aux1,k_aux1 ! for local memory allocator: loc. mem. buffer 1
+      integer i,j,k,l,m,n         ! auxiliary indices
+      integer ia,ib,ic,id,ie      !auxiliary indices
+      integer iaux
+c      integer nact              !number of active virtual orbitals
+c h created here from "orbital" matrix horb
+      double precision h(nos+nvs,nos+nvs)
+c horb valid only for RHF case
+      double precision horb((nos+nvs)/2,(nos+nvs)/2)
+      double precision v(nos+nvs,nos+nvs,nos+nvs,nos+nvs)
+c RRST 
+      double precision v1(nos+nvs,nos+nvs)
+      double precision h0(nos+nvs,nos+nvs)
+      integer iext(nos+nvs)  ! iext(i)=0/1  (0 i=active) (1 i=ext)
+      integer vnext   !number of virtual externa orb.
+      integer iext1(nstot,nstot)
+      integer iext2(nstot,nstot,nstot,nstot)
+      integer ispin(nstot)
+c      integer ext3(nstot,nstot,nstot,nstot,nstot,nstot)
+c v2 <===> v(nos+nvs,nos+nvs,nos+nvs,nos+nvs)
+      double precision a1_1o(nos+nvs,nos+nvs)
+      double precision a2_1o(nos+nvs,nos+nvs,nos+nvs,nos+nvs)
+      double precision a1_2o(nos+nvs,nos+nvs)
+      double precision a2_2o(nstot,nstot,nstot,nstot)
+c      double precision a3_2o(nstot,nstot,nstot,nstot,nstot,nstot)
+c
+c
+c t2 in a nice representation : be careful here (you may want to reindex
+c virtuals
+c      double precision t1(nos,nos+1:nos+nvs)
+c      double precision t2(nos,nos,nos+1:nos+nvs,nos+1:nos+nvs)
+c transformed matrices
+ccx      double precision ht(nos+nvs,nos+nvs)
+!      double precision FOCKt(nos+nvs,nos+nvs)
+ccx      double precision vt(nos+nvs,nos+nvs,nos+nvs,nos+nvs)  
+c correlation energies
+      double precision eccsd
+      double precision xxx,yyy,zzz
+c RRST norms
+      double precision h1_0ext,h1_1ext,h1_2ext
+      double precision h1_0ext_diag,h1_2ext_diag
+      double precision h0_0ext,h0_1ext,h0_2ext
+      double precision v1_0ext,v1_1ext,v1_2ext
+      double precision v2_0ext,v2_1ext,v2_2ext,v2_3ext,v2_4ext
+      double precision v2_0ext_diag,v2_2ext_diag,v2_4ext_diag
+c
+      logical nodezero
+      logical oprint_qa
+c
+c
+      nodezero = (ga_nodeid().eq.0)
+      oprint_qa=util_print('ducc_qa', print_high)
+c
+c
+c
+      do i=1,(nos+nvs)/2
+      do j=1,(nos+nvs)/2
+        horb(i,j)=0.0d0
+      enddo
+      enddo
+c
+      do i=1,nos+nvs
+        iext(i)=0
+      do j=1,nos+nvs
+        h(i,j)=0.0d0
+        h0(i,j)=0.0d0
+        v1(i,j)=0.0d0
+        a1_1o(i,j)=0.0d0
+        a1_2o(i,j)=0.0d0
+        iext1(i,j)=0
+      enddo
+      enddo
+c
+      call kinetic_hcore_1(rtdb,horb,h,nos,nvs,noas,nobs,nvas,nvbs)
+c
+c     
+c forming v matrix
+c
+      do i=1,nos+nvs
+      do j=1,nos+nvs
+      do k=1,nos+nvs
+      do l=1,nos+nvs
+        v(i,j,k,l)=0.0d0 
+        a2_1o(i,j,k,l)=0.0d0
+        a2_2o(i,j,k,l)=0.0d0 
+        iext2(i,j,k,l)=0
+      enddo
+      enddo
+      enddo
+      enddo
+c
+      call mapping_v2_m(rtdb,d_v2,k_v2_offset,v,nos,nvs)
+c
+c
+c
+c  you have everything here for RRST: v & h are ready
+c
+c  ATTENTION:   Works only for the RHF case
+c
+      vnext=nvas-nactv !number of virtual external orbitals
+c
+      do i=1,nvas-nactv
+       iext(noas+nobs+nactv+i)=1
+       iext(noas+nobs+nvas+nactv+i)=1
+      enddo
+c
+c
+c *** debug ***
+      if(nodezero) then
+        write(6,*)'nstot: ',nstot
+        write(6,*)'nactv: ',nactv
+        write(6,*)'vnext: ',vnext
+        write(6,*)'------- IEXT -----'
+        do i=1,nstot
+         write(6,200) iext(i),i
+        enddo
+        write(6,*)'------- IEXT -----'
+        call util_flush(6)
+      endif !nodezero
+c *************
+c
+c
+      do i=1,nstot
+      do j=1,nstot
+       iext1(i,j)=iext(i)+iext(j)
+      enddo
+      enddo
+c
+      do i=1,nstot
+      do j=1,nstot
+      do k=1,nstot
+      do l=1,nstot
+       iext2(i,j,k,l)=iext(i)+iext(j)+iext(k)+iext(l)
+      enddo
+      enddo
+      enddo
+      enddo
+c
+c *** debug ***
+      if(nodezero) then
+        write(6,*)'------- iext1 -----'
+        do i=1,nstot
+        do j=1,nstot
+          write(6,202) i,j,iext1(i,j)
+        enddo
+        enddo
+        write(6,*)'------- iext1 -----'
+        call util_flush(6)
+ 202    format(3i4)
+      endif !nodezero
+c *************
+c
+c      do i=1,nstot
+c      do j=1,nstot
+c      do k=1,nstot
+c      do l=1,nstot
+c      do m=1,nstot
+c      do n=1,nstot
+c       iext3(i,j,k,l,m,n)=iext(i)+iext(j)+iext(k)+iext(l)
+c     &                   +iext(m)+iext(n)
+c      enddo
+c      enddo
+c      enddo
+c      enddo
+c      enddo
+c      enddo
+c
+c
+c ispin
+c
+      do i=1,noas
+       ispin(i)=1
+      enddo
+      do i=noas+1,noas+nobs
+       ispin(i)=2
+      enddo
+      do i=nos+1,nos+nvas
+       ispin(i)=1
+      enddo
+      do i=nos+nvas+1,nstot
+       ispin(i)=2
+      enddo
+c *** debug ***
+      if(nodezero) then
+        write(6,*)'nstot: ',nstot
+        write(6,*)'------- ISPIN -----'
+        do i=1,nstot
+         write(6,200) ispin(i),i
+        enddo
+        write(6,*)'------- ISPIN -----'
+        call util_flush(6)
+ 200    format(2i7)
+      endif !nodezero
+c *************
+c
+c
+c
+c constructing h0 & v1
+c
+      do i=1,nstot
+      do j=1,nstot
+       h0(i,j)=h(i,j)
+      enddo
+      enddo
+c
+      do i=1,nstot
+      do j=1,nstot
+        do m=1,nos
+         h0(i,j)=h0(i,j)+v(i,m,j,m)
+         v1(i,j)=v1(i,j)-v(i,m,j,m)
+        enddo
+      enddo
+      enddo
+c *** debug ***
+      if(nodezero) then
+        write(6,*)'------- h0 matrix -----'
+        do i=1,nstot
+        do j=1,nstot
+         xxx=dabs(h0(i,j))
+         if(xxx.gt.1.0d-9) then
+          write(6,201) i,j,h0(i,j)
+         endif
+        enddo
+        enddo
+        write(6,*)'------- h0 matrix -----'
+        call util_flush(6)
+ 201    format(2i4,3x,f14.6)
+      endif !nodezero
+c *************
+c
+c h0 &  v1 done here
+c
+c  NORMS 
+c
+      h0_0ext=0.0d0
+      h0_1ext=0.0d0
+      h0_2ext=0.0d0
+c
+      h1_0ext=0.0d0
+      h1_1ext=0.0d0
+      h1_2ext=0.0d0
+c
+      h1_0ext_diag=0.0d0
+      h1_2ext_diag=0.0d0
+c
+      v1_0ext=0.0d0
+      v1_1ext=0.0d0
+      v1_2ext=0.0d0
+c
+      v2_0ext=0.0d0
+      v2_1ext=0.0d0
+      v2_2ext=0.0d0
+      v2_3ext=0.0d0
+      v2_4ext=0.0d0
+c
+      v2_0ext_diag=0.0d0
+      v2_2ext_diag=0.0d0
+      v2_4ext_diag=0.0d0
+c
+      do i=1,nstot
+      do j=1,nstot
+        xxx=h0(i,j)
+        yyy=v1(i,j)
+        zzz=h(i,j)
+        iaux=iext(i)+iext(j)
+        if(iaux.eq.0) then
+         h0_0ext=h0_0ext+xxx*xxx
+         v1_0ext=v1_0ext+yyy*yyy
+         h1_0ext=h1_0ext+zzz*zzz
+         if(i.eq.j) then 
+          h1_0ext_diag=h1_0ext_diag+zzz*zzz
+         endif 
+        else if(iaux.eq.1) then
+         h0_1ext=h0_1ext+xxx*xxx
+         v1_1ext=v1_1ext+yyy*yyy
+         h1_1ext=h1_1ext+zzz*zzz
+        else
+         h0_2ext=h0_2ext+xxx*xxx
+         v1_2ext=v1_2ext+yyy*yyy
+         h1_2ext=h1_2ext+zzz*zzz
+         if(i.eq.j) then
+          h1_2ext_diag=h1_2ext_diag+zzz*zzz
+         endif
+        endif
+      enddo
+      enddo
+c
+      do i=1,nstot
+      do j=i+1,nstot
+      do k=1,nstot
+      do l=k+1,nstot
+       iaux=iext(i)+iext(j)+iext(k)+iext(l)
+       xxx=v(i,j,k,l)
+       if(iaux.eq.0) then
+          v2_0ext=v2_0ext+xxx*xxx
+           if((i.eq.k).and.(j.eq.l)) then
+            v2_0ext_diag=v2_0ext_diag+xxx*xxx
+           endif
+       else if(iaux.eq.1) then 
+          v2_1ext=v2_1ext+xxx*xxx
+       else if(iaux.eq.2) then
+          v2_2ext=v2_2ext+xxx*xxx
+           if((i.eq.k).and.(j.eq.l)) then
+            v2_2ext_diag=v2_2ext_diag+xxx*xxx
+           endif
+       else if(iaux.eq.3) then
+          v2_3ext=v2_3ext+xxx*xxx
+       else 
+          v2_4ext=v2_4ext+xxx*xxx
+           if((i.eq.k).and.(j.eq.l)) then
+            v2_4ext_diag=v2_4ext_diag+xxx*xxx
+           endif
+       endif
+      enddo
+      enddo
+      enddo
+      enddo
+c
+      h1_0ext=dsqrt(h1_0ext)
+      h1_1ext=dsqrt(h1_1ext)
+      h1_2ext=dsqrt(h1_2ext)
+c
+      h1_0ext_diag=dsqrt(h1_0ext_diag)
+      h1_2ext_diag=dsqrt(h1_2ext_diag)
+
+c
+      h0_0ext=dsqrt(h0_0ext)
+      h0_1ext=dsqrt(h0_1ext)
+      h0_2ext=dsqrt(h0_2ext)
+c
+      v1_0ext=dsqrt(v1_0ext)
+      v1_1ext=dsqrt(v1_1ext)
+      v1_2ext=dsqrt(v1_2ext)
+c
+      v2_0ext=dsqrt(v2_0ext)
+      v2_1ext=dsqrt(v2_1ext)
+      v2_2ext=dsqrt(v2_2ext)
+      v2_3ext=dsqrt(v2_3ext)
+      v2_4ext=dsqrt(v2_4ext)
+c
+      v2_0ext_diag=dsqrt(v2_0ext_diag)
+      v2_2ext_diag=dsqrt(v2_2ext_diag)
+      v2_4ext_diag=dsqrt(v2_4ext_diag)
+c
+      if(nodezero) then 
+c
+         write(6,97) vnext,h1_0ext
+         write(6,98) vnext,h1_1ext
+         write(6,99) vnext,h1_2ext
+c
+         write(6,100) vnext,h0_0ext
+         write(6,101) vnext,h0_1ext
+         write(6,102) vnext,h0_2ext
+c
+         write(6,103) vnext,v1_0ext
+         write(6,104) vnext,v1_1ext
+         write(6,105) vnext,v1_2ext
+c
+         write(6,106) vnext,v2_0ext
+         write(6,107) vnext,v2_1ext
+         write(6,108) vnext,v2_2ext
+         write(6,109) vnext,v2_3ext
+         write(6,110) vnext,v2_4ext
+c
+         write(6,111) vnext,h1_0ext_diag
+         write(6,112) vnext,h1_2ext_diag
+         write(6,113) vnext,v2_0ext_diag
+         write(6,114) vnext,v2_2ext_diag
+         write(6,115) vnext,v2_4ext_diag
+      endif
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+c
+  97  format('# of external orbitals: ',i4,2x,'h1_0ext norm: ',f10.5)
+  98  format('# of external orbitals: ',i4,2x,'h1_1ext norm: ',f10.5)
+  99  format('# of external orbitals: ',i4,2x,'h1_2ext norm: ',f10.5)
+c
+ 100  format('# of external orbitals: ',i4,2x,'h0_0ext norm: ',f10.5)
+ 101  format('# of external orbitals: ',i4,2x,'h0_1ext norm: ',f10.5)
+ 102  format('# of external orbitals: ',i4,2x,'h0_2ext norm: ',f10.5)
+c
+ 103  format('# of external orbitals: ',i4,2x,'v1_0ext norm: ',f10.5)
+ 104  format('# of external orbitals: ',i4,2x,'v1_1ext norm: ',f10.5)
+ 105  format('# of external orbitals: ',i4,2x,'v1_2ext norm: ',f10.5)
+c
+ 106  format('# of external orbitals: ',i4,2x,'v2_0ext norm: ',f10.5)
+ 107  format('# of external orbitals: ',i4,2x,'v2_1ext norm: ',f10.5)
+ 108  format('# of external orbitals: ',i4,2x,'v2_2ext norm: ',f10.5)
+ 109  format('# of external orbitals: ',i4,2x,'v2_3ext norm: ',f10.5)
+ 110  format('# of external orbitals: ',i4,2x,'v2_4ext norm: ',f10.5)
+c
+ 111  format('# of ext. orb.: ',i4,2x,'h1_0ext_diag norm: ',f10.5)
+ 112  format('# of ext. orb.: ',i4,2x,'h1_2ext_diag norm: ',f10.5)
+ 113  format('# of ext. orb.: ',i4,2x,'v2_0ext_diag norm: ',f10.5)
+ 114  format('# of ext. orb.: ',i4,2x,'v2_2ext_diag norm: ',f10.5)
+ 115  format('# of ext. orb.: ',i4,2x,'v2_4ext_diag norm: ',f10.5)
+c
+      return 
+      end
+

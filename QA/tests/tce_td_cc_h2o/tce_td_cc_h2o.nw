@@ -1,0 +1,52 @@
+start tce_td_cc_h2o
+
+echo
+
+geometry units bohr
+# in the current version of TD-CCSD implementation always use C1 symmetry
+symmetry c1
+H    0.000000000000000   1.079252144093028   1.474611055780858
+O    0.000000000000000   0.000000000000000   0.000000000000000
+H    0.000000000000000   1.079252144093028  -1.474611055780858
+end
+
+basis
+H library sto-3g
+O library sto-3g
+end
+
+scf
+thresh 1.0e-10
+tol2e 1.0e-10
+singlet
+rhf
+end
+
+
+tce
+ccsd
+tilesize 3
+thresh
+end
+
+task tce energy
+
+charge 1
+
+scf
+thresh 1.0e-10
+tol2e 1.0e-10
+doublet
+rohf
+end
+
+tce
+ccsd
+tilesize 3
+thresh
+end
+
+task tce energy
+
+
+

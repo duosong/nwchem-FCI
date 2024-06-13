@@ -1,0 +1,6 @@
+tcgmsg/tcgmsg-mpi/evon.lo: ../ga-5.8/tcgmsg/tcgmsg-mpi/evon.c config.h \
+  ../ga-5.8/tcgmsg/tcgmsg-mpi/evlog.h
+
+config.h:
+
+../ga-5.8/tcgmsg/tcgmsg-mpi/evlog.h:

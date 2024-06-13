@@ -1,0 +1,118 @@
+c singles equations (no contributions from doubles)
+      do i=1,isize1
+        p=amp1_list(i,1)
+        q=amp1_list(i,2)
+c S1
+        do s=1,nstot
+         ipl1=abs(amp1n(s,q))
+         xxx=xsg(amp1n(s,q))
+         if(ipl1.eq.0) then 
+          matrix(i,ipl1)=matrix(i,ipl1)+h(p,s)*xxx
+         endif
+        enddo 
+c S2
+        do s=1,nstot
+         ipl1=abs(amp1n(p,s))
+         xxx=xsg(amp1n(p,s))
+         if(ipl1.ne.0) then 
+          matrix(i,ipl1)=matrix(i,ipl1)-h(s,q)*xxx
+         endif
+        enddo
+      enddo
+c doubles equations (contributions from one- and two-body amplit.)
+      do i=1,isize2
+       p=amp2_list(i,1)
+       q=amp2_list(i,2)
+       r=amp2_list(i,3)
+       s=amp2_list(i,4)
+c D1
+       do u=1,nstot
+        ipl1=abs(amp1n(u,r))
+        xxx=xsg(amp1n(u,r))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)+v(p,q,u,s)*xxx
+        endif
+       enddo
+c D2 
+       do u=1,nstot
+        ipl1=abs(amp1n(u,s))
+        xxx=xsg(amp1n(u,s))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)-v(p,q,u,r)*xxx
+        endif
+       enddo
+c D3
+       do t=1,nstot
+        ipl1=abs(amp1n(p,t))
+        xxx=xsg(amp1n(p,t))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)-v(t,q,r,s)*xxx
+        endif
+       enddo
+c D4
+       do t=1,nstot
+        ipl1=abs(amp1n(q,t))
+        xxx=xsg(amp1n(q,t))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)+v(t,p,r,s)*xxx
+        endif
+       enddo
+c D5
+       do t=1,nstot
+        ipl1=abs(amp2n(t,q,r,s))
+        xxx=xsg(amp2n(t,q,r,s))
+        if(ipl1.ne.0)then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)+h(p,t)*xxx
+        endif
+       enddo
+c D6
+       do t=1,nstot
+        ipl1=abs(amp2n(t,p,r,s))
+        xxx=xsg(amp2n(t,p,r,s))
+        if(ipl1.ne.0)then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)-h(q,t)*xxx
+        endif
+       enddo
+c D7
+       do t=1,nstot
+        ipl1=abs(amp2n(p,q,t,s))
+        xxx=xsg(amp2n(p,q,t,s))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)-h(t,r)*xxx
+        endif
+       enddo
+c D8
+       do t=1,nstot
+        ipl1=abs(amp2n(p,q,t,r))
+        xxx=xsg(amp2n(p,q,t,r))
+        if(ipl1.ne.0) then
+         matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)+h(t,s)*xxx
+        endif
+       enddo
+c D9
+       do t=1,nstot
+       do u=1,nstot
+        ipl1=abs(amp2n(t,u,r,s))
+        xxx=xsg(amp2n(t,u,r,s))
+        if(ipl1.ne.0) then
+          matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)+
+     &    (0.50d0)*v(p,q,t,u)*xxx
+        endif
+       enddo
+       enddo
+c D10
+       do t=1,nstot
+       do u=1,nstot
+        ipl1=abs(amp2n(p,q,t,u))
+        xxx=xsg(amp2n(p,q,t,u))
+        if(ipl1.ne.0) then
+          matrix(i+isize1,ipl1)=matrix(i+isize1,ipl1)-
+     &    (0.50d0)*v(t,u,r,s)*xxx
+        endif
+       enddo
+       enddo
+c
+      enddo !isize2
+
+
+

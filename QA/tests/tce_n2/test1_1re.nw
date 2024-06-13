@@ -1,0 +1,28 @@
+start tce_n2_1re
+ 
+echo
+ 
+geometry units bohr
+  symmetry c1
+  n 0 0   -1.034
+  n 0 0    1.034
+end
+ 
+basis
+ * library cc-pvdz
+end
+
+ 
+scf
+thresh 1.0e-10
+tol2e 1.0e-10
+singlet
+rhf
+end
+ 
+tce
+ccsd
+end
+ 
+task tce energy
+ 

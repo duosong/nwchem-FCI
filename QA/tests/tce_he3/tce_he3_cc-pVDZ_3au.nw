@@ -1,0 +1,29 @@
+start tce_he3_cc-pVDZ_3au
+ 
+echo
+ 
+geometry units bohr
+  symmetry c1
+  he  3.0  0.0  0.0
+  he  0.0  0.0  0.0  
+  he -3.0  0.0  0.0
+end
+ 
+basis
+ * library cc-pVDZ
+end
+ 
+scf
+thresh 1.0e-11
+tol2e 1.0e-13
+singlet
+rhf
+end
+ 
+tce
+ccsd(t)
+thresh 1.0d-10
+end
+ 
+task tce energy
+ 

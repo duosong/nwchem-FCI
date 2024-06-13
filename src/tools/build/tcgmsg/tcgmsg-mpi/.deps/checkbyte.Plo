@@ -1,0 +1,4 @@
+tcgmsg/tcgmsg-mpi/checkbyte.lo: ../ga-5.8/tcgmsg/tcgmsg-mpi/checkbyte.c \
+  config.h
+
+config.h:

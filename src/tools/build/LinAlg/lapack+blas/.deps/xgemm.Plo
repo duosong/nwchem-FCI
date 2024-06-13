@@ -1,0 +1,6 @@
+LinAlg/lapack+blas/xgemm.lo: ../ga-5.8/LinAlg/lapack+blas/xgemm.c \
+  config.h ../ga-5.8/LinAlg/lapack+blas/xgemm.h
+
+config.h:
+
+../ga-5.8/LinAlg/lapack+blas/xgemm.h:

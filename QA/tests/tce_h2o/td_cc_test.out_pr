@@ -1,0 +1,19 @@
+nohup: ignoring input
+ argument  1 = td_cc_test.nw
+  Unable to open td_cc_test.nw --- appending .nw
+ ------------------------------------------------------------------------
+ nwchem: failed to open the input file                   0
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+  current input line : 
+     0: 
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ There is an error in the input file
+ ------------------------------------------------------------------------
+ For more information see the NWChem manual at https://github.com/nwchemgit/nwchem/wiki
+
+
+ For further details see manual section:                                                                                                                                                                                                                                                                
+[0] Received an Error in Communication: (-1) 0:nwchem: failed to open the input file:
+Abort(-1) on node 0 (rank 0 in comm 496): application called MPI_Abort(comm=0x84000003, -1) - process 0

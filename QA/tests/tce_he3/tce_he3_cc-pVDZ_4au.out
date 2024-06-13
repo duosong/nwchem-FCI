@@ -1,0 +1,686 @@
+nohup: ignoring input
+ argument  1 = tce_he3_cc-pVDZ_4au.nw
+  NWChem w/ OpenMP: maximum threads =    1
+
+
+
+============================== echo of input deck ==============================
+start tce_he3_cc-pVDZ_4au
+
+echo
+
+geometry units bohr
+  symmetry c1
+  he  4.0  0.0  0.0
+  he  0.0  0.0  0.0
+  he -4.0  0.0  0.0
+end
+
+basis
+ * library cc-pVDZ
+end
+
+scf
+thresh 1.0e-11
+tol2e 1.0e-13
+singlet
+rhf
+end
+
+tce
+ccsd(t)
+thresh 1.0d-10
+end
+
+task tce energy
+
+================================================================================
+
+
+                                         
+                                         
+
+
+             Northwest Computational Chemistry Package (NWChem) 7.0.1
+             --------------------------------------------------------
+
+
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+
+                              Copyright (c) 1994-2020
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = koothan
+    program         = /hpc/home/kowalski/nwchem/bin/LINUX64/nwchem
+    date            = Fri Dec 11 14:41:07 2020
+
+    compiled        = Sun_Nov_15_19:26:35_2020
+    source          = /hpc/home/kowalski/nwchem
+    nwchem branch   = 7.0.0
+    nwchem revision = nwchem_on_git-2069-ga5c152f2d
+    ga revision     = 5.8.0
+    use scalapack   = T
+    input           = tce_he3_cc-pVDZ_4au.nw
+    prefix          = tce_he3_cc-pVDZ_4au.
+    data base       = ./tce_he3_cc-pVDZ_4au.db
+    status          = startup
+    nproc           =        1
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =   13107194 doubles =    100.0 Mbytes
+    stack    =   13107199 doubles =    100.0 Mbytes
+    global   =   26214400 doubles =    200.0 Mbytes (distinct from heap & stack)
+    total    =   52428793 doubles =    400.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+
+  0 permanent = .
+  0 scratch   = .
+
+
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+ Turning off AUTOSYM since
+ SYMMETRY directive was detected!
+
+
+          ------
+          auto-z
+          ------
+     1 autoz failed with cvr_scaling = 1.2 changing to 1.3
+     2 autoz failed with cvr_scaling = 1.3 changing to 1.4
+     3 autoz failed with cvr_scaling = 1.4 changing to 1.5
+     4 autoz failed with cvr_scaling = 1.5 changing to 1.6
+     5 autoz failed with cvr_scaling = 1.6 changing to 1.7
+
+ AUTOZ failed to generate good internal coordinates.
+ Cartesian coordinates will be used in optimizations.
+
+
+
+                             Geometry "geometry" -> ""
+                             -------------------------
+
+ Output coordinates in a.u. (scale by  1.000000000 to convert to a.u.)
+
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 he                   2.0000     4.00000000     0.00000000     0.00000000
+    2 he                   2.0000     0.00000000     0.00000000     0.00000000
+    3 he                   2.0000    -4.00000000     0.00000000     0.00000000
+
+      Atomic Mass 
+      ----------- 
+
+      he                 4.002600
+
+
+ Effective nuclear repulsion energy (a.u.)       2.5000000000
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+     0.0000000000     0.0000000000     0.0000000000
+
+
+            XYZ format geometry
+            -------------------
+     3
+ geometry
+ he                    2.11670900     0.00000000     0.00000000
+ he                    0.00000000     0.00000000     0.00000000
+ he                   -2.11670900     0.00000000     0.00000000
+
+
+
+ Summary of "ao basis" -> "" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ *                          cc-pVDZ                   on all atoms 
+
+
+                      Basis "ao basis" -> "ao basis" (cartesian)
+                      -----
+  he (Helium)
+  -----------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  3.83600000E+01  0.023809
+  1 S  5.77000000E+00  0.154891
+  1 S  1.24000000E+00  0.469987
+
+  2 S  2.97600000E-01  1.000000
+
+  3 P  1.27500000E+00  1.000000
+
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ he                         cc-pVDZ                  3        5   2s1p
+
+
+                                 NWChem SCF Module
+                                 -----------------
+
+
+
+  ao basis        = "ao basis"
+  functions       =    15
+  atoms           =     3
+  closed shells   =     3
+  open shells     =     0
+  charge          =   0.00
+  wavefunction    = RHF 
+  input vectors   = atomic
+  output vectors  = ./tce_he3_cc-pVDZ_4au.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ he                         cc-pVDZ                  3        5   2s1p
+
+
+
+ Forming initial guess at       0.1s
+
+
+      Superposition of Atomic Density Guess
+      -------------------------------------
+
+ Sum of atomic energies:          -8.56548134
+
+      Non-variational initial energy
+      ------------------------------
+
+ Total energy =      -8.568392
+ 1-e energy   =     -16.646062
+ 2-e energy   =       5.577669
+ HOMO         =      -0.879014
+ LUMO         =       1.263613
+
+
+ Starting SCF solution at       0.2s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-11
+ Maximum no. of iterations :           30
+ Final Fock-matrix accuracy:          1.000E-13
+ ----------------------------------------------
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1       -8.5631788842  3.58D-03  2.11D-03      0.1
+                 2       -8.5631794040  5.59D-07  3.28D-07      0.1
+                 3       -8.5631794040  1.43D-13  8.64D-14      0.1
+
+
+       Final RHF  results 
+       ------------------ 
+
+         Total SCF energy =     -8.563179403995
+      One-electron energy =    -16.644847878453
+      Two-electron energy =      5.581668474458
+ Nuclear repulsion energy =      2.500000000000
+
+        Time for solution =      0.0s
+
+
+             Final eigenvalues
+             -----------------
+
+              1      
+    1   -0.9370
+    2   -0.9141
+    3   -0.8896
+    4    1.2639
+    5    1.3882
+    6    1.5879
+    7    2.5181
+    8    2.5243
+    9    2.5243
+   10    2.5248
+   11    2.5248
+   12    2.5257
+   13    2.5257
+
+                       ROHF Final Molecular Orbital Analysis
+                       -------------------------------------
+
+ Vector    1  Occ=2.000000D+00  E=-9.369669D-01
+              MO Center= -4.7D-15, -3.6D-20, -2.7D-20, r^2= 2.5D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      0.410885  2 He s                  7      0.355082  2 He s          
+     1      0.289669  1 He s                 11      0.289669  3 He s          
+     2      0.250050  1 He s                 12      0.250050  3 He s          
+
+ Vector    2  Occ=2.000000D+00  E=-9.141427D-01
+              MO Center=  8.0D-14,  6.7D-17,  5.2D-17, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     1      0.418823  1 He s                 11     -0.418823  3 He s          
+     2      0.362959  1 He s                 12     -0.362959  3 He s          
+
+ Vector    3  Occ=2.000000D+00  E=-8.896459D-01
+              MO Center= -7.3D-14,  6.6D-21,  1.3D-21, r^2= 2.6D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      0.428028  2 He s                  7      0.370844  2 He s          
+     1     -0.303798  1 He s                 11     -0.303798  3 He s          
+     2     -0.262940  1 He s                 12     -0.262940  3 He s          
+
+ Vector    4  Occ=0.000000D+00  E= 1.263888D+00
+              MO Center= -2.2D-15, -5.2D-19, -3.8D-19, r^2= 2.7D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     6      0.804561  2 He s                  7     -0.772571  2 He s          
+     1      0.554037  1 He s                 11      0.554037  3 He s          
+     2     -0.530694  1 He s                 12     -0.530694  3 He s          
+
+ Vector    5  Occ=0.000000D+00  E= 1.388227D+00
+              MO Center= -4.5D-15,  6.9D-18,  3.3D-18, r^2= 5.1D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     2     -0.832748  1 He s                 12      0.832748  3 He s          
+     1      0.807944  1 He s                 11     -0.807944  3 He s          
+
+ Vector    6  Occ=0.000000D+00  E= 1.587925D+00
+              MO Center=  8.3D-15, -1.2D-18, -9.1D-19, r^2= 3.4D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     7      0.916943  2 He s                  6     -0.818277  2 He s          
+     2     -0.670771  1 He s                 12     -0.670771  3 He s          
+     1      0.600395  1 He s                 11      0.600395  3 He s          
+
+ Vector    7  Occ=0.000000D+00  E= 2.518132D+00
+              MO Center= -5.8D-14, -1.9D-16,  3.7D-17, r^2= 3.9D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     3      0.633601  1 He px                13      0.633601  3 He px         
+     8     -0.441794  2 He px         
+
+ Vector    8  Occ=0.000000D+00  E= 2.524275D+00
+              MO Center=  5.8D-12, -7.3D-19,  8.7D-18, r^2= 3.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      0.624081  2 He pz                 5      0.549294  1 He pz         
+    15      0.549294  3 He pz         
+
+ Vector    9  Occ=0.000000D+00  E= 2.524275D+00
+              MO Center=  2.9D-13, -1.0D-17, -8.6D-19, r^2= 3.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     9      0.624081  2 He py                 4      0.549294  1 He py         
+    14      0.549294  3 He py         
+
+ Vector   10  Occ=0.000000D+00  E= 2.524842D+00
+              MO Center=  1.0D-12, -2.7D-16, -5.8D-17, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     4      0.690533  1 He py                14     -0.690533  3 He py         
+     5      0.152198  1 He pz                15     -0.152198  3 He pz         
+
+ Vector   11  Occ=0.000000D+00  E= 2.524842D+00
+              MO Center= -5.7D-12,  4.8D-17, -2.2D-16, r^2= 4.8D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     5      0.690533  1 He pz                15     -0.690533  3 He pz         
+     4     -0.152198  1 He py                14      0.152198  3 He py         
+
+ Vector   12  Occ=0.000000D+00  E= 2.525721D+00
+              MO Center= -2.6D-13,  6.6D-18, -1.0D-17, r^2= 2.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+    10      0.656023  2 He pz                 9     -0.421190  2 He py         
+     5     -0.372679  1 He pz                15     -0.372679  3 He pz         
+     4      0.239274  1 He py                14      0.239274  3 He py         
+
+ Vector   13  Occ=0.000000D+00  E= 2.525721D+00
+              MO Center= -1.2D-12,  5.3D-18,  3.4D-18, r^2= 2.0D+00
+   Bfn.  Coefficient  Atom+Function         Bfn.  Coefficient  Atom+Function  
+  ----- ------------  ---------------      ----- ------------  ---------------
+     9      0.656023  2 He py                10      0.421190  2 He pz         
+     4     -0.372679  1 He py                14     -0.372679  3 He py         
+     5     -0.239274  1 He pz                15     -0.239274  3 He pz         
+
+
+ center of mass
+ --------------
+ x =   0.00000000 y =   0.00000000 z =   0.00000000
+
+ moments of inertia (a.u.)
+ ------------------
+           0.000000000000           0.000000000000           0.000000000000
+           0.000000000000         128.083200000000           0.000000000000
+           0.000000000000           0.000000000000         128.083200000000
+
+  Mulliken analysis of the total density
+  --------------------------------------
+
+    Atom       Charge   Shell Charges
+ -----------   ------   -------------------------------------------------------
+    1 He   2     2.00   1.09  0.91  0.00
+    2 He   2     2.00   1.09  0.91  0.00
+    3 He   2     2.00   1.09  0.91  0.00
+
+       Multipole analysis of the density wrt the origin
+       ------------------------------------------------
+
+     L   x y z        total         open         nuclear
+     -   - - -        -----         ----         -------
+     0   0 0 0     -0.000000      0.000000      6.000000
+
+     1   1 0 0     -0.000000      0.000000      0.000000
+     1   0 1 0     -0.000000      0.000000      0.000000
+     1   0 0 1     -0.000000      0.000000      0.000000
+
+     2   2 0 0     -2.353720      0.000000     64.000000
+     2   1 1 0     -0.000000      0.000000      0.000000
+     2   1 0 1     -0.000000      0.000000      0.000000
+     2   0 2 0     -2.322390      0.000000      0.000000
+     2   0 1 1     -0.000000      0.000000      0.000000
+     2   0 0 2     -2.322390      0.000000      0.000000
+
+                   NWChem Extensible Many-Electron Theory Module
+                   ---------------------------------------------
+
+              ======================================================
+                   This portion of the program was automatically
+                  generated by a Tensor Contraction Engine (TCE).
+                  The development of this portion of the program
+                 and TCE was supported by US Department of Energy,
+                Office of Science, Office of Basic Energy Science.
+                      TCE is a product of Battelle and PNNL.
+              Please cite: S.Hirata, J.Phys.Chem.A 107, 9887 (2003).
+              ======================================================
+
+            General Information
+            -------------------
+      Number of processors :     1
+         Wavefunction type : Restricted Hartree-Fock
+          No. of electrons :     6
+           Alpha electrons :     3
+            Beta electrons :     3
+           No. of orbitals :    30
+            Alpha orbitals :    15
+             Beta orbitals :    15
+        Alpha frozen cores :     0
+         Beta frozen cores :     0
+     Alpha frozen virtuals :     0
+      Beta frozen virtuals :     0
+         Spin multiplicity : singlet 
+    Number of AO functions :    15
+       Number of AO shells :     9
+        Use of symmetry is : off
+      Symmetry adaption is : off
+         Schwarz screening : 0.10D-12
+
+          Correlation Information
+          -----------------------
+          Calculation type : Coupled-cluster singles & doubles w/ perturbation           
+   Perturbative correction : (T)                                                         
+            Max iterations :      100
+        Residual threshold : 0.10D-09
+     T(0) DIIS level shift : 0.00D+00
+     L(0) DIIS level shift : 0.00D+00
+     T(1) DIIS level shift : 0.00D+00
+     L(1) DIIS level shift : 0.00D+00
+     T(R) DIIS level shift : 0.00D+00
+     T(I) DIIS level shift : 0.00D+00
+   CC-T/L Amplitude update :  5-th order DIIS
+                I/O scheme : Global Array Library
+        L-threshold :  0.10D-09
+        EOM-threshold :  0.10D-09
+ no EOMCCSD initial starts read in
+ TCE RESTART OPTIONS
+ READ_INT:   F
+ WRITE_INT:  F
+ READ_TA:    F
+ WRITE_TA:   F
+ READ_XA:    F
+ WRITE_XA:   F
+ READ_IN3:   F
+ WRITE_IN3:  F
+ SLICE:      F
+ D4D5:       F
+ quantumc:   F
+ qrotation:  F
+ pwtce:      F
+ qducc:      F
+ nacto:                         0
+ nrotv:                         0
+ nrot:                          0
+
+            Memory Information
+            ------------------
+          Available GA space size is      26214175 doubles
+          Available MA space size is      26213556 doubles
+
+ Maximum block size        24 doubles
+
+ tile_dim =     12
+
+ Block   Spin    Irrep     Size     Offset   Alpha
+ -------------------------------------------------
+   1    alpha     a      3 doubles       0       1
+   2    beta      a      3 doubles       3       1
+   3    alpha     a     12 doubles       6       3
+   4    beta      a     12 doubles      18       3
+
+ Global array virtual files algorithm will be used
+
+ Parallel file system coherency ......... OK
+
+ Fock matrix recomputed
+ 1-e file size   =              225
+ 1-e file name   = ./tce_he3_cc-pVDZ_4au.f1
+ Cpu & wall time / sec            0.0            0.0
+
+ tce_ao2e: fast2e=1
+ half-transformed integrals in memory
+
+ 2-e (intermediate) file size =          135675
+ 2-e (intermediate) file name = ./tce_he3_cc-pVDZ_4au.v2i
+ Cpu & wall time / sec            0.0            0.0
+
+ tce_mo2e: fast2e=1
+ 2-e integrals stored in memory
+
+ 2-e file size   =            86346
+ 2-e file name   = ./tce_he3_cc-pVDZ_4au.v2
+ Cpu & wall time / sec            0.0            0.0
+ T1-number-of-tasks                    1
+
+ t1 file size   =               36
+ t1 file name   = ./tce_he3_cc-pVDZ_4au.t1
+ t1 file handle =       -999
+ T2-number-of-boxes                    2
+
+ t2 file size   =             2592
+ t2 file name   = ./tce_he3_cc-pVDZ_4au.t2
+ t2 file handle =       -996
+CCSD iterations
+ ---------------------------------------------------------
+ Iter          Residuum       Correlation     Cpu    Wall 
+ ---------------------------------------------------------
+NEW TASK SCHEDULING
+CCSD_T1_NTS --- OK
+CCSD_T2_NTS --- OK
+    1   0.1349873193609  -0.0775921509632     0.0     0.0
+    2   0.0275649165743  -0.0933397500776     0.0     0.0
+    3   0.0059474393191  -0.0965291575130     0.0     0.0
+    4   0.0013602760101  -0.0971901934424     0.0     0.0
+    5   0.0003260695432  -0.0973313244778     0.0     0.0
+ MICROCYCLE DIIS UPDATE:                    5                    5
+    6   0.0000027963762  -0.0973716487547     0.0     0.0
+    7   0.0000010110790  -0.0973716147123     0.0     0.0
+    8   0.0000003323702  -0.0973716084825     0.0     0.0
+    9   0.0000001140960  -0.0973716072390     0.0     0.0
+   10   0.0000000398812  -0.0973716070211     0.0     0.0
+ MICROCYCLE DIIS UPDATE:                   10                    5
+   11   0.0000000030062  -0.0973716070107     0.0     0.0
+   12   0.0000000007975  -0.0973716069943     0.0     0.0
+   13   0.0000000002288  -0.0973716069911     0.0     0.0
+   14   0.0000000000673  -0.0973716069904     0.0     0.0
+ -----------------------------------------------------------------
+ Iterations converged
+ CCSD correlation energy / hartree =        -0.097371606990409
+ CCSD total energy / hartree       =        -8.660551010985301
+
+ Singles contributions
+
+ Doubles contributions
+ CCSD(T)
+ Using plain CCSD(T) code
+
+ CCSD[T]  correction energy / hartree =        -0.000004967017566
+ CCSD[T] correlation energy / hartree =        -0.097376574007974
+ CCSD[T] total energy / hartree       =        -8.660555978002867
+ CCSD(T)  correction energy / hartree =        -0.000004963893090
+ CCSD(T) correlation energy / hartree =        -0.097376570883499
+ CCSD(T) total energy / hartree       =        -8.660555974878392
+ Cpu & wall time / sec            0.0            0.0
+
+ Task  times  cpu:        0.1s     wall:        0.2s
+
+
+                                NWChem Input Module
+                                -------------------
+
+
+ Summary of allocated global arrays
+-----------------------------------
+  No active global arrays
+
+
+
+                         GA Statistics for process    0
+                         ------------------------------
+
+       create   destroy   get      put      acc     scatter   gather  read&inc
+calls:  836      836     6644     1251     2403        0        0     4023     
+number of processes/call -7.51e+13 -5.71e+15 -1.43e+15 0.00e+00 0.00e+00
+bytes total:             3.93e+07 3.19e+06 9.45e+06 0.00e+00 0.00e+00 3.22e+04
+bytes remote:            0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
+Max memory consumed for GA by this process: 1779776 bytes
+
+MA_summarize_allocated_blocks: starting scan ...
+MA_summarize_allocated_blocks: scan completed: 0 heap blocks, 0 stack blocks
+MA usage statistics:
+
+	allocation statistics:
+					      heap	     stack
+					      ----	     -----
+	current number of blocks	         0	         0
+	maximum number of blocks	        16	        36
+	current total bytes		         0	         0
+	maximum total bytes		     80152	  22509400
+	maximum total K-bytes		        81	     22510
+	maximum total M-bytes		         1	        23
+
+
+                                     CITATION
+                                     --------
+                Please cite the following reference when publishing
+                           results obtained with NWChem:
+
+          E. Aprà, E. J. Bylaska, W. A. de Jong, N. Govind, K. Kowalski,
+       T. P. Straatsma, M. Valiev, H. J. J. van Dam, Y. Alexeev, J. Anchell,
+       V. Anisimov, F. W. Aquino, R. Atta-Fynn, J. Autschbach, N. P. Bauman,
+     J. C. Becca, D. E. Bernholdt, K. Bhaskaran-Nair, S. Bogatko, P. Borowski,
+        J. Boschen, J. Brabec, A. Bruner, E. Cauët, Y. Chen, G. N. Chuev,
+      C. J. Cramer, J. Daily, M. J. O. Deegan, T. H. Dunning Jr., M. Dupuis,
+   K. G. Dyall, G. I. Fann, S. A. Fischer, A. Fonari, H. Früchtl, L. Gagliardi,
+      J. Garza, N. Gawande, S. Ghosh, K. Glaesemann, A. W. Götz, J. Hammond,
+       V. Helms, E. D. Hermes, K. Hirao, S. Hirata, M. Jacquelin, L. Jensen,
+   B. G. Johnson, H. Jónsson, R. A. Kendall, M. Klemm, R. Kobayashi, V. Konkov,
+      S. Krishnamoorthy, M. Krishnan, Z. Lin, R. D. Lins, R. J. Littlefield,
+      A. J. Logsdail, K. Lopata, W. Ma, A. V. Marenich, J. Martin del Campo,
+   D. Mejia-Rodriguez, J. E. Moore, J. M. Mullin, T. Nakajima, D. R. Nascimento,
+    J. A. Nichols, P. J. Nichols, J. Nieplocha, A. Otero-de-la-Roza, B. Palmer,
+    A. Panyala, T. Pirojsirikul, B. Peng, R. Peverati, J. Pittner, L. Pollack,
+   R. M. Richard, P. Sadayappan, G. C. Schatz, W. A. Shelton, D. W. Silverstein,
+   D. M. A. Smith, T. A. Soares, D. Song, M. Swart, H. L. Taylor, G. S. Thomas,
+            V. Tipparaju, D. G. Truhlar, K. Tsemekhman, T. Van Voorhis,
+     Á. Vázquez-Mayagoitia, P. Verma, O. Villa, A. Vishnu, K. D. Vogiatzis,
+        D. Wang, J. H. Weare, M. J. Williamson, T. L. Windus, K. Woliński,
+        A. T. Wong, Q. Wu, C. Yang, Q. Yu, M. Zacharias, Z. Zhang, Y. Zhao,
+                                and R. J. Harrison
+                        "NWChem: Past, present, and future
+                         J. Chem. Phys. 152, 184102 (2020)
+                               doi:10.1063/5.0004997
+
+                                      AUTHORS
+                                      -------
+     E. Apra, E. J. Bylaska, N. Govind, K. Kowalski, M. Valiev, W. A. de Jong,
+      T. P. Straatsma, H. J. J. van Dam, D. Wang, T. L. Windus, N. P. Bauman,
+       A. Panyala, J. Hammond, J. Autschbach, K. Bhaskaran-Nair, J. Brabec,
+    K. Lopata, S. A. Fischer, S. Krishnamoorthy, M. Jacquelin, W. Ma, M. Klemm,
+       O. Villa, Y. Chen, V. Anisimov, F. Aquino, S. Hirata, M. T. Hackler,
+           Eric Hermes, L. Jensen, J. E. Moore, J. C. Becca, V. Konjkov,
+            D. Mejia-Rodriguez, T. Risthaus, M. Malagoli, A. Marenich,
+   A. Otero-de-la-Roza, J. Mullin, P. Nichols, R. Peverati, J. Pittner, Y. Zhao,
+        P.-D. Fan, A. Fonari, M. J. Williamson, R. J. Harrison, J. R. Rehr,
+      M. Dupuis, D. Silverstein, D. M. A. Smith, J. Nieplocha, V. Tipparaju,
+      M. Krishnan, B. E. Van Kuiken, A. Vazquez-Mayagoitia, M. Swart, Q. Wu,
+   T. Van Voorhis, A. A. Auer, M. Nooijen, L. D. Crosby, E. Brown, G. Cisneros,
+     G. I. Fann, H. Fruchtl, J. Garza, K. Hirao, R. A. Kendall, J. A. Nichols,
+       K. Tsemekhman, K. Wolinski, J. Anchell, D. E. Bernholdt, P. Borowski,
+       T. Clark, D. Clerc, H. Dachsel, M. J. O. Deegan, K. Dyall, D. Elwood,
+      E. Glendening, M. Gutowski, A. C. Hess, J. Jaffe, B. G. Johnson, J. Ju,
+        R. Kobayashi, R. Kutteh, Z. Lin, R. Littlefield, X. Long, B. Meng,
+      T. Nakajima, S. Niu, L. Pollack, M. Rosing, K. Glaesemann, G. Sandrone,
+      M. Stave, H. Taylor, G. Thomas, J. H. van Lenthe, A. T. Wong, Z. Zhang.
+
+ Total times  cpu:        0.1s     wall:        0.3s

@@ -1,0 +1,405 @@
+/hpc/home/kowalski/nwchem/bin/LINUX64/depend.x -I./include -I/hpc/home/kowalski/nwchem/src/tools/install/include > dependencies
+Compiling tce_energy.F...
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce'
+make[1]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce'
+Making all in include
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/include'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/include'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/include'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/include'
+Making all in diis
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis'
+Making all in diis2
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/diis2'
+Making all in gradients
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/gradients'
+Making all in ccsd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd'
+Making all in ccsd_lambda
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_lambda'
+Making all in eomccsd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd'
+Making all in ccsd_t
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_t'
+Making all in cr-eomccsd_t
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+Making all in lrh
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lrh'
+Making all in emb
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/emb'
+Making all in ccd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccd'
+Making all in lccd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccd'
+Making all in lccsd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/lccsd'
+Making all in qcisd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/qcisd'
+Making all in cc3
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cc3'
+Making all in mbpt1
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt1'
+Making all in mbpt2
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt2'
+Making all in mbpt3
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt3'
+Making all in mbpt4
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mbpt4'
+Making all in cis
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cis'
+Making all in cisd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisd'
+Making all in cisdt
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdt'
+Making all in cisdtq
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cisdtq'
+Making all in ccsd_act
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_act'
+Making all in eomccsd_act
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsd_act'
+Making all in cr_eomccsd_t_act
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr_eomccsd_t_act'
+Making all in sort
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/sort'
+Making all in ducc
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ducc'
+Making all in ucc4
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ucc4'
+Making all in eaccsd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eaccsd'
+Making all in ipccsd
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ipccsd'
+Making all in ccsdt
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt'
+Making all in ccsdt_lambda
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdt_lambda'
+Making all in eomccsdt
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdt'
+Making all in ccsd_alpha
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_alpha'
+Making all in ccsd_beta
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_beta'
+Making all in ccsd_yr
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsd_yr'
+Making all in response
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+Making all in ccsdtq
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq'
+Making all in ccsdtq_lambda
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_lambda'
+Making all in eomccsdtq
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/eomccsdtq'
+Making all in ccsdtq_alpha_offdiag
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/ccsdtq_alpha_offdiag'
+Making all in response
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/response'
+Making all in mrcc
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+make[2]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+Making all in include
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/include'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/include'
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/include'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/include'
+Making all in ccsd
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+make[3]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd'
+Making all in ccsd_sub
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+make[3]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_sub'
+Making all in ccsd_t
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+make[3]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/ccsd_t'
+Making all in uss
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[3]: '/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a' is up to date.
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[3]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[3]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc/uss'
+make[2]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+make[2]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/mrcc'
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce'
+Got lock on /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.lock
+ar rU /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a tce_energy.o
+echo /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a
+/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce'

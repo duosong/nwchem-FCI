@@ -1,0 +1,12 @@
+in version from Apr30b we change the ordering of A amplitudes  (symmetry irreducible subset)
+
+ind(*,*) monotonic function of pairs (*,*) 
+
+ind(p,q)=p+(q-1)(q-2)/2
+ind(r,s)=r+(s-1)(s-2)/2
+
+ind(r,s)<ind(p,q)
+
+On May 2nd - fixed problem with S1 diagram (.eq. instead of .ne.)
+
+

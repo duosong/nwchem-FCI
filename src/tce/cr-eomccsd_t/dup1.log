@@ -1,0 +1,10 @@
+/hpc/home/kowalski/nwchem/bin/LINUX64/depend.x -I../include -I/hpc/home/kowalski/nwchem/src/tools/install/include > dependencies
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+Compiling nr0.F...
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+make[1]: Entering directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
+Got lock on /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.lock
+ar rU /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a nr0.o
+echo /hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a
+/hpc/home/kowalski/nwchem/lib/LINUX64/libtce.a
+make[1]: Leaving directory '/hpc/home/kowalski/nwchem/src/tce/cr-eomccsd_t'
