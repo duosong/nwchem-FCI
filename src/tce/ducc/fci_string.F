@@ -326,6 +326,8 @@ c
         integer chi1,chi2
         double precision h(nstot,nstot)
         double precision ho(nstot/2,nstot/2)
+        double precision hs(nstot,nstot)
+        double precision hos(nstot/2,nstot/2)
         double precision v(nstot,nstot,nstot,nstot)
         double precision vc(nstot/2,nstot/2,nstot/2,nstot/2)
         double precision vx(nstot/2,nstot/2,nstot/2,nstot/2)
@@ -356,6 +358,8 @@ c
 c
         logical nodezero
         logical sym_test
+        logical periodic
+
 c  eigensolver
         double precision wr(dim_fci),wi(dim_fci)
         double precision vl,vr,work(3*dim_fci)
@@ -364,6 +368,8 @@ c
 c
         sym_test=.true.
         nodezero = (ga_nodeid().eq.0)
+        periodic=.true.
+c       periodic=.false.
 c
 c
 c
@@ -410,6 +416,53 @@ c
            h(qb,pb) = ho(q,p)
         enddo
         enddo
+
+*       *******************************
+*       one-electron screened integral
+*       *******************************
+        if(periodic) then
+           write(*,*) "Reading screened h1"
+           open(105,file="one_electron_screened_integrals.dat",
+     >              status="old")
+           read(105,*) noccp,nvirt,nh1
+
+           do i=1,nh1
+              read(105,*) p,q,hos(p,q)
+              hos(q,p) = hos(p,q)
+           end do
+
+           close(105)
+
+           do p=1,noccp+nvirt
+           do q=1,noccp+nvirt
+              if(p.le.noccp) then
+                 pa = p
+                 pb = p + noccp
+              end if
+              if(p.gt.noccp) then
+                 pa = p + noccp
+                 pb = p + noccp + nvirt
+              end if
+              if(q.le.noccp) then
+                 qa = q
+                 qb = q + noccp
+              end if
+              if(q.gt.noccp) then
+                 qa = q + noccp
+                 qb = q + noccp + nvirt
+              end if
+
+              hs(pa,qa) = hos(p,q)
+              hs(pa,qb) = 0.0d0
+              hs(pb,qa) = 0.0d0
+              hs(pb,qb) = hos(p,q)
+              hs(qa,pa) = hos(q,p)
+              hs(qa,pb) = 0.0d0
+              hs(qb,pa) = 0.0d0
+              hs(qb,pb) = hos(q,p)
+          enddo
+          enddo
+        end if
 
 *       ***********************
 *       two-electron integral
@@ -461,7 +514,7 @@ c
         enddo
         do i=1,noas+nobs
         do j=1,noas+nobs
-         my_rhf = my_rhf + (0.50d0)*v(i,j,i,j)
+         my_rhf = my_rhf + (0.50d0)*vx(i,j,i,j)
         enddo
         enddo
 c
@@ -693,6 +746,9 @@ c
        do k=1,nstot
         string1(k)=strings(i,k)
         string2(k)=strings(j,k)
+        if(i.eq.1.and.j.eq.19) then
+          write(*,*) "String 1,19",k,string1(k),string2(k)
+        end if
         string_diff(k)=string1(k)-string2(k)
         idiff=idiff+abs(string_diff(k))
        enddo
@@ -849,9 +905,8 @@ c p part
         string2(p)=1
 c
          iphase=(-1)**isum
-c
          xxx = 0.0d0
-         xxx = xxx + h(p,q)*dble(iphase)
+c
 c       if(i.eq.1 .and. j.eq.3) then
 c         write(*,*) "13",dble(iphase),p,q,h(p,q),xxx
 c       end if
@@ -887,13 +942,32 @@ c       end if
 
           if(ps.eq.ts .and. p.ne.t .and. q.ne.t) then
               v(p,t,q,t) = 0.50d0*vc(u,u,n,w) - vx(n,u,w,u)
+         if(i.eq.1 .and. j.eq.19) then
+             write(*,*) "idiff=1,19,v1",p,t,q,t,v(p,t,q,t),dble(iphase)
+             write(*,*) u,u,n,w,vc(u,u,n,w)
+             write(*,*) n,u,w,u,vx(n,u,w,u)
+         end if 
 c             if(p.eq.4 .and. t.eq.3) 
 c    >           write(*,*) "p4t3",vc(u,u,n,w),vx(n,u,w,u),v(p,t,q,t)
           else if(ps.ne.ts) then
               !We may need to change vc to vx (screened kernel)
-              v(p,t,q,t) = 0.50d0*vc(u,u,n,w)
+c             v(p,t,q,t) = 0.50d0*vc(u,u,n,w)
+              if(periodic) then
+              v(p,t,q,t) = vx(u,u,n,w)
+              h(p,q)=hs(p,q)
+              end if
+         if(i.eq.1 .and. j.eq.19) then
+             write(*,*) "idiff=1,19,v2",p,t,q,t,v(p,t,q,t),dble(iphase)
+             write(*,*) u,u,n,w,vc(u,u,n,w)
+         end if 
           else if(p.eq.t .or. q.eq.t) then
-              v(p,t,q,t) = 0.125d0*vc(w,n,w,n) - 0.25*vx(w,n,w,n)
+              !v(p,t,q,t) = 0.125d0*vc(w,n,w,n) - 0.25*vx(w,n,w,n)
+              v(p,t,q,t) = 0.25d0*vc(w,n,w,n) - 0.5*vx(w,n,w,n)
+         if(i.eq.1 .and. j.eq.19) then
+             write(*,*) "idiff=1,19,v3",p,t,q,t,v(p,t,q,t),dble(iphase)
+             write(*,*) w,n,w,n,0.125d0,vc(w,n,w,n)
+             write(*,*) w,n,w,n,-0.25d0,vx(w,n,w,n)
+         end if 
           end if
 
           xxx = xxx + v(p,t,q,t)*dble(iphase) 
@@ -902,6 +976,10 @@ c         write(*,*) "p=1,q=2",dble(iphase),p,q,t,v(p,t,q,t),xxx
 c       end if
          enddo
 c
+         xxx = xxx + h(p,q)*dble(iphase)
+         if(i.eq.1 .and. j.eq.19) then
+             write(*,*) "idiff=1,19,h1",p,q,h(p,q),dble(iphase)
+         end if
          matrix(i,j) = matrix(i,j) + xxx
          matrix(j,i) = matrix(j,i) + xxx
 c 
@@ -980,6 +1058,10 @@ c         end if
        endif !idiff=0
 c ------------------------------------------------
 c
+
+      if(i.eq.1) then
+         write(*,*) i,j,idiff
+      end if
       enddo           !main loop2
       enddo           !main loop1
 c
@@ -1006,11 +1088,13 @@ cccx        call moments_uhf(matrix,trial,dim_fci,maxm)
 c
 c diagonalization
 c
+      open(303,file="FCI_matrix.dat")
       do i=1,dim_fci
       do j=1,dim_fci
-         write(*,*) i,j,matrix(i,j)
+         write(303,*) i,j,matrix(i,j)
       end do
       end do
+      close(303)
 
       call util_dgeev('n','n',dim_fci,matrix,dim_fci,
      1  wr,wi,vl,1,vr,1,
