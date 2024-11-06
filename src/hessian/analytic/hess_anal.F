@@ -146,7 +146,7 @@ c
       if (oprint) write(LuOut,*) 'HESS: before the onedd_cont call'
       if (ohessprof) call pstat_on(ps_onedd)
       t0=util_wallsec()
-      call onedd_cont(rtdb)
+c     call onedd_cont(rtdb)
       if (ohessprof) call pstat_off(ps_onedd)
 c
 c  Get the nuclear contribution to the hessian
