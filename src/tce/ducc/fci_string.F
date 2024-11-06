@@ -376,7 +376,6 @@ c
 *       ***********************
 *       one-electron integral
 *       ***********************
-        write(*,*) "Reading h1"
         open(101,file="one_electron_integrals.dat",status="old")
         read(101,*) noccp,nvirt,nh1
 
@@ -421,7 +420,6 @@ c
 *       one-electron screened integral
 *       *******************************
         if(periodic) then
-           write(*,*) "Reading screened h1"
            open(105,file="one_electron_screened_integrals.dat",
      >              status="old")
            read(105,*) noccp,nvirt,nh1
@@ -467,7 +465,6 @@ c
 *       ***********************
 *       two-electron integral
 *       ***********************
-       write(*,*) "Reading v2"
        open(102,file="two_electron_integrals_coulomb.dat",status="old")
        open(103,file="two_electron_integrals_exchange.dat",status="old")
 
@@ -746,9 +743,6 @@ c
        do k=1,nstot
         string1(k)=strings(i,k)
         string2(k)=strings(j,k)
-        if(i.eq.1.and.j.eq.19) then
-          write(*,*) "String 1,19",k,string1(k),string2(k)
-        end if
         string_diff(k)=string1(k)-string2(k)
         idiff=idiff+abs(string_diff(k))
        enddo
@@ -845,19 +839,6 @@ c
      >     v(p,q,r,s) = vx(m,u,n,w)-vx(m,w,n,u)
 
         matrix(i,j)=matrix(i,j)+dble(iphase)*v(p,q,r,s) 
-c       write(*,*) "off-diag,2diff:",i,j
-c       if(i.eq.1 .and. j.eq.5) then
-c         write(*,*) "1515",p,q,r,s,m,n,u,w,v(p,q,r,s),matrix(i,j)
-c       end if
-c       if(i.eq.2 .and. j.eq.4) then
-c         write(*,*) "24",p,q,r,s,v(p,q,r,s),matrix(i,j)
-c       end if
-c       if(i.eq.1 .and. j.eq.3) then
-c         write(*,*) "13",p,q,r,s,v(p,q,r,s),matrix(i,j)
-c       end if
-c       if(i.eq.3 .and. j.eq.8) then
-c         write(*,*) "38",p,q,r,s,v(p,q,r,s),matrix(i,j)
-c       end if
         matrix(j,i)=matrix(j,i)+dble(iphase)*v(p,q,r,s)
 c check
         do k=1,nstot
@@ -907,9 +888,6 @@ c
          iphase=(-1)**isum
          xxx = 0.0d0
 c
-c       if(i.eq.1 .and. j.eq.3) then
-c         write(*,*) "13",dble(iphase),p,q,h(p,q),xxx
-c       end if
          do m=1,noas+nobs
           t=ind_set(m)
           if(p.le.noccp) w = p
@@ -942,44 +920,16 @@ c       end if
 
           if(ps.eq.ts .and. p.ne.t .and. q.ne.t) then
               v(p,t,q,t) = 0.50d0*vc(u,u,n,w) - vx(n,u,w,u)
-         if(i.eq.1 .and. j.eq.19) then
-             write(*,*) "idiff=1,19,v1",p,t,q,t,v(p,t,q,t),dble(iphase)
-             write(*,*) u,u,n,w,vc(u,u,n,w)
-             write(*,*) n,u,w,u,vx(n,u,w,u)
-         end if 
-c             if(p.eq.4 .and. t.eq.3) 
-c    >           write(*,*) "p4t3",vc(u,u,n,w),vx(n,u,w,u),v(p,t,q,t)
           else if(ps.ne.ts) then
-              !We may need to change vc to vx (screened kernel)
-c             v(p,t,q,t) = 0.50d0*vc(u,u,n,w)
-              if(periodic) then
-              v(p,t,q,t) = vx(u,u,n,w)
-              h(p,q)=hs(p,q)
-              end if
-         if(i.eq.1 .and. j.eq.19) then
-             write(*,*) "idiff=1,19,v2",p,t,q,t,v(p,t,q,t),dble(iphase)
-             write(*,*) u,u,n,w,vc(u,u,n,w)
-         end if 
+              v(p,t,q,t) = 0.50d0*vc(u,u,n,w)
           else if(p.eq.t .or. q.eq.t) then
-              !v(p,t,q,t) = 0.125d0*vc(w,n,w,n) - 0.25*vx(w,n,w,n)
               v(p,t,q,t) = 0.25d0*vc(w,n,w,n) - 0.5*vx(w,n,w,n)
-         if(i.eq.1 .and. j.eq.19) then
-             write(*,*) "idiff=1,19,v3",p,t,q,t,v(p,t,q,t),dble(iphase)
-             write(*,*) w,n,w,n,0.125d0,vc(w,n,w,n)
-             write(*,*) w,n,w,n,-0.25d0,vx(w,n,w,n)
-         end if 
           end if
 
           xxx = xxx + v(p,t,q,t)*dble(iphase) 
-c       if(i.eq.1 .and. j.eq.2) then
-c         write(*,*) "p=1,q=2",dble(iphase),p,q,t,v(p,t,q,t),xxx
-c       end if
          enddo
 c
          xxx = xxx + h(p,q)*dble(iphase)
-         if(i.eq.1 .and. j.eq.19) then
-             write(*,*) "idiff=1,19,h1",p,q,h(p,q),dble(iphase)
-         end if
          matrix(i,j) = matrix(i,j) + xxx
          matrix(j,i) = matrix(j,i) + xxx
 c 
@@ -1059,9 +1009,9 @@ c         end if
 c ------------------------------------------------
 c
 
-      if(i.eq.1) then
-         write(*,*) i,j,idiff
-      end if
+c     if(i.eq.1) then
+c        write(*,*) i,j,idiff
+c     end if
       enddo           !main loop2
       enddo           !main loop1
 c
@@ -1088,13 +1038,13 @@ cccx        call moments_uhf(matrix,trial,dim_fci,maxm)
 c
 c diagonalization
 c
-      open(303,file="FCI_matrix.dat")
-      do i=1,dim_fci
-      do j=1,dim_fci
-         write(303,*) i,j,matrix(i,j)
-      end do
-      end do
-      close(303)
+c     open(303,file="FCI_matrix.dat")
+c     do i=1,dim_fci
+c     do j=1,dim_fci
+c        write(303,*) i,j,matrix(i,j)
+c     end do
+c     end do
+c     close(303)
 
       call util_dgeev('n','n',dim_fci,matrix,dim_fci,
      1  wr,wi,vl,1,vr,1,
